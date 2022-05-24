@@ -1,0 +1,63 @@
+<label class="form-label" class="fs-4">Spécifier le poste à vérifier (si vide, vérification de tous les postes) :</label>
+
+
+<form>
+    <div class="row">
+        <!-- Grid column -->
+        <div class="col-md-12">
+          <!-- Material input -->
+          <div class="md-form form-group">
+            <input type="text" class="form-control" id="inputAddressMD" placeholder="1234 Main St">
+            <label for="inputAddressMD">Address</label>
+          </div>
+        </div>
+    </div>  
+</form>
+
+
+<form [formGroup]="FORM_GRP_GET_EDR">   
+    <div class="form-group">
+        <label for="id">id</label>
+        <input id="id" type="text" formControlName="id">
+    </div>
+    <div class="form-group">
+        <label for="data_type">data_type</label>
+        <input id="data_type" type="text" formControlName="data_type">
+    </div>
+    <div class="form-group">
+        <label for="computer_windows_id">computer_windows_id</label>
+        <input id="computer_windows_id" type="text" formControlName="computer_windows_id">
+    </div>
+    <div class="form-group">
+        <label for="min_date">min_date</label>
+        <input id="min_date" type="date" formControlName="min_date">
+        <input id="min_time" type="time" formControlName="min_time">
+    </div>
+    <div class="form-group">
+        <label for="max_date">max_date</label>
+        <input id="max_date" type="date" formControlName="max_date">
+        <input id="max_time" type="time" formControlName="max_time">
+    </div>
+    <div class="action-buttons">
+        <button type="submit" class="btn btn-primary mb-3" (click)="onSubmitFormEdr()">Submit</button>
+    </div>
+</form>
+
+<br>
+
+<ng-container *ngIf="IN_EDR_DATA">
+    <div *ngIf="IN_EDR_DATA.success">
+        <div *ngFor="let body of IN_EDR_DATA.body" class="mb-5">
+            <div>{{ body._id }}</div>
+            <div>{{ body.computer_windows_id }}</div>
+            <div>{{ body.created_timestamp }}</div>
+            <div>{{ body.data_type }}</div>
+            <div>{{ body.data.hash_id }}</div>
+            <div>{{ body.data.path_file }}</div>
+            <app-virustotal [INPUT_EDR_BODY]="body"></app-virustotal>
+            <!-- <app-virustotal (OUT_VIRUSTOTAL_HASH)="body"></app-virustotal> -->
+        </div>
+    </div>
+
+    <div *ngIf="IN_EDR_DATA.success">{{ IN_EDR_DATA.message_error }}</div>
+</ng-container>

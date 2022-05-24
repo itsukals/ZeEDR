@@ -1,0 +1,22 @@
+<button class="btn btn-lg btn-outline-primary" (click)="open(mymodal)">Détails</button>
+   
+<ng-template #mymodal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Bootstrap Modal</h4>
+  </div>
+  <div class="modal-body">
+    HelloWorld
+    <div *ngIf="INPUT_EDR_BODY">
+        Hello : {{INPUT_EDR_BODY._id}}
+        <div *ngIf="VIRUSTOTAL_DATA.success && VIRUSTOTAL_DATA.body">
+            {{VIRUSTOTAL_DATA.body._id}}
+        </div>
+        <div *ngIf="!VIRUSTOTAL_DATA.success">
+            {{VIRUSTOTAL_DATA.message_error}}
+        </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-danger" (click)="modal.close('Save click')">close</button>
+  </div>
+</ng-template>
