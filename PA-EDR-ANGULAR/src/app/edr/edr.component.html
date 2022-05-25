@@ -1,21 +1,100 @@
-<label class="form-label" class="fs-4">Spécifier le poste à vérifier (si vide, vérification de tous les postes) :</label>
+<!-- <label class="form-label" class="fs-4">Spécifier le poste à vérifier (si vide, vérification de tous les postes) :</label> -->
+<div class="container-fluid my-4">
 
+<h4 class="my-5 h4">Spécifier le poste à vérifier (si vide, vérification de tous les postes) :</h4>
 
-<form>
-    <div class="row">
-        <!-- Grid column -->
-        <div class="col-md-12">
-          <!-- Material input -->
-          <div class="md-form form-group">
-            <input type="text" class="form-control" id="inputAddressMD" placeholder="1234 Main St">
-            <label for="inputAddressMD">Address</label>
-          </div>
+    <div class="border border-danger p-4 rounded w-50">
+
+      <div class="md-form form-group">
+        <label for="id"><strong>Id</strong></label>
+        <input type="text" class="form-control" id="id" placeholder="Id of the computer">
+      </div>
+
+      <div class="md-form form-group">
+        <label for="data_type"><strong>data_type</strong></label>
+        <input type="text" class="form-control" id="data_type" placeholder="data to get">
+      </div>
+
+      <div class="md-form form-group">
+        <label for="mac_addr"><strong>MAC Address</strong></label>
+        <input type="text" class="form-control" id="mac_addr" placeholder="MAC Address">
+      </div>
+
+      <div class="md-form form-group">
+        <label for="min_date"><strong>min date</strong></label>
+        <input type="date" class="form-control" id="min_date" formControlName="min_date">
+        <input type="time" class="form-control" id="min_time" formControlName="min_time">
+      </div>
+
+      <div class="md-form form-group">
+        <label for="max_date"><strong>max date</strong></label>
+        <input type="date" class="form-control" id="max_date" formControlName="max_date">
+        <input type="time" class="form-control" id="max_time" formControlName="max_time">
+      </div>
+
+      <br>
+
+      <div class="action-buttons">
+        <button type="submit" class="btn btn-primary mb-3" (click)="onSubmitFormEdr()">Submit</button>
+      </div>
+
+    </div>
+
+<hr class="my-4">
+
+<h4 class="my-5 h4">Résultats :</h4>
+
+<div class="border border-danger p-4 rounded w-50">
+
+    <ng-container *ngIf="IN_EDR_DATA">
+        <div *ngIf="IN_EDR_DATA.success">
+            <div *ngFor="let body of IN_EDR_DATA.body" class="mb-5">
+                <div class="md-form form-group">
+                    <label for="id_edr"><strong>Id EDR</strong></label>
+                    <input readonly type="text" class="form-control" id="id_edr" placeholder="{{ body._id }}">
+                </div>
+                <!-- <div>{{ body._id }}</div> -->
+                <div class="md-form form-group">
+                    <label for="data_type"><strong>Data type</strong></label>
+                    <input readonly type="text" class="form-control" id="data_type" placeholder="{{ body.data_type }}">
+                </div>
+                <!-- <div>{{ body.data_type }}</div> -->
+                <div class="md-form form-group">
+                    <label for="mac_addr"><strong>MAC Address</strong></label>
+                    <input readonly type="text" class="form-control" id="mac_addr" placeholder="{{ body.computer_windows_id }}">
+                </div>
+                <!-- <div>{{ body.computer_windows_id }}</div> -->
+                <div class="md-form form-group">
+                    <label for="timestamp"><strong>timestamp</strong></label>
+                    <input readonly type="text" class="form-control" id="timestamp" placeholder="{{ body.created_timestamp }}">
+                </div>
+                <!-- <div>{{ body.created_timestamp }}</div> -->
+                <div class="md-form form-group">
+                    <label for="hash_id"><strong>Id Hash</strong></label>
+                    <input readonly type="text" class="form-control" id="hash_id" placeholder="{{ body.data.hash_id }}">
+                </div>
+                <!-- <div>{{ body.data.hash_id }}</div> -->
+                <div class="md-form form-group">
+                    <label for="path_file"><strong>Path file</strong></label>
+                    <input readonly type="text" class="form-control" id="path_file" placeholder="{{ body.data.path_file }}">
+                </div>
+                <!-- <div>{{ body.data.path_file }}</div> -->
+                <br>
+                <app-virustotal [INPUT_EDR_BODY]="body"></app-virustotal>
+                <!-- <app-virustotal (OUT_VIRUSTOTAL_HASH)="body"></app-virustotal> -->
+            </div>
         </div>
-    </div>  
-</form>
+
+        <div *ngIf="IN_EDR_DATA.success">{{ IN_EDR_DATA.message_error }}</div>
+    </ng-container>
+</div>
 
 
-<form [formGroup]="FORM_GRP_GET_EDR">   
+
+
+</div>
+
+<!-- <form [formGroup]="FORM_GRP_GET_EDR">   
     <div class="form-group">
         <label for="id">id</label>
         <input id="id" type="text" formControlName="id">
@@ -41,9 +120,9 @@
     <div class="action-buttons">
         <button type="submit" class="btn btn-primary mb-3" (click)="onSubmitFormEdr()">Submit</button>
     </div>
-</form>
+</form> -->
 
-<br>
+<!-- <br>
 
 <ng-container *ngIf="IN_EDR_DATA">
     <div *ngIf="IN_EDR_DATA.success">
@@ -55,9 +134,9 @@
             <div>{{ body.data.hash_id }}</div>
             <div>{{ body.data.path_file }}</div>
             <app-virustotal [INPUT_EDR_BODY]="body"></app-virustotal>
-            <!-- <app-virustotal (OUT_VIRUSTOTAL_HASH)="body"></app-virustotal> -->
+            <app-virustotal (OUT_VIRUSTOTAL_HASH)="body"></app-virustotal>
         </div>
     </div>
 
     <div *ngIf="IN_EDR_DATA.success">{{ IN_EDR_DATA.message_error }}</div>
-</ng-container>
+</ng-container> -->
