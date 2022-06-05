@@ -2,17 +2,23 @@
    
 <ng-template #mymodal let-modal>
   <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Bootstrap Modal</h4>
+    <h4 class="modal-title" id="modal-basic-title">Détails</h4>
   </div>
   <div class="modal-body">
-    HelloWorld
     <div *ngIf="INPUT_EDR_BODY">
-        Hello : {{INPUT_EDR_BODY._id}}
+      <u><strong>ID EDR</strong></u> : {{INPUT_EDR_BODY._id}}
         <div *ngIf="VIRUSTOTAL_DATA.success && VIRUSTOTAL_DATA.body">
-            {{VIRUSTOTAL_DATA.body._id}}
+            <div><u><strong>HASH</strong></u> : {{VIRUSTOTAL_DATA.body._id}}</div>
+            <div><u><strong>Name</strong></u> : {{VIRUSTOTAL_DATA.body.name}}</div>
+            <div *ngFor="let VTBC of VIRUSTOTAL_DATA.body.crowdsourced_yara_results">
+              <u><strong>Description</strong></u> : {{VTBC.description}}
+            </div>
+            <div><u><strong>URL</strong></u> : https://www.virustotal.com/gui/file/{{VIRUSTOTAL_DATA.body._id}}</div>
+            <!-- <div style="cursor: pointer; color: blue;" onclick="window.location.href='http://www.virustotal.com/gui/file/', '_blank'">Link to VirusTotal</div> -->
+            <!-- <div style="cursor: pointer; color: blue;" onclick="window.open('http://www.virustotal.com/gui/file/', '_blank');">Link to VirusTotal</div> -->
         </div>
         <div *ngIf="!VIRUSTOTAL_DATA.success">
-            {{VIRUSTOTAL_DATA.message_error}}
+          {{VIRUSTOTAL_DATA.message_error}}
         </div>
     </div>
   </div>
