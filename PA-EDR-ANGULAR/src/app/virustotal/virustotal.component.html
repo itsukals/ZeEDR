@@ -13,9 +13,6 @@
             <div *ngFor="let VTBC of VIRUSTOTAL_DATA.body.crowdsourced_yara_results">
               <u><strong>Description</strong></u> : {{VTBC.description}}
             </div>
-            <!-- <div><u><strong>URL</strong></u> : https://www.virustotal.com/gui/file/{{VIRUSTOTAL_DATA.body._id}}</div> -->
-            <!-- <div style="cursor: pointer; color: blue;" onclick="window.location.href='http://www.virustotal.com/gui/file/', '_blank'">Link to VirusTotal</div> -->
-            <!-- <div style="cursor: pointer; color: blue;" onclick="window.open('http://www.virustotal.com/gui/file/', '_blank');">Link to VirusTotal</div> -->
             <div><a href="http://www.virustotal.com/gui/file/{{VIRUSTOTAL_DATA.body._id}}" target="_blank">Link to VirusTotal</a></div>
         </div>
         <div *ngIf="!VIRUSTOTAL_DATA.success">

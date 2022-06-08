@@ -1,3 +1,4 @@
+
 <form [formGroup]="FORM_GRP_GET_EDR">
 
     <div class="container-fluid my-4">
@@ -6,28 +7,28 @@
 
         <div class="border border-danger p-4 rounded w-50">
 
-        <div class="md-form form-group">
+        <div class="form-group">
             <label for="id"><strong>Id</strong></label>
-            <input type="text" class="form-control" id="id" placeholder="Id of the computer">
+            <input type="text" class="form-control" id="id" formControlName="id"  placeholder="Id EDR">
         </div>
 
-        <div class="md-form form-group">
+        <div class="form-group">
             <label for="data_type"><strong>data_type</strong></label>
-            <input type="text" class="form-control" id="data_type" placeholder="data to get">
+            <input type="text" class="form-control" id="data_type" formControlName="data_type"  placeholder="data to get">
         </div>
 
-        <div class="md-form form-group">
-            <label for="mac_addr"><strong>MAC Address</strong></label>
-            <input type="text" class="form-control" id="mac_addr" placeholder="MAC Address">
+        <div class="form-group">
+            <label for="computer_windows_id"><strong>MAC Address</strong></label>
+            <input type="text" class="form-control" id="computer_windows_id" formControlName="computer_windows_id"  placeholder="MAC Address">
         </div>
 
-        <div class="md-form form-group">
+        <div class="form-group">
             <label for="min_date"><strong>min date</strong></label>
             <input type="date" class="form-control" id="min_date" formControlName="min_date">
             <input type="time" class="form-control" id="min_time" formControlName="min_time">
         </div>
 
-        <div class="md-form form-group">
+        <div class="form-group">
             <label for="max_date"><strong>max date</strong></label>
             <input type="date" class="form-control" id="max_date" formControlName="max_date">
             <input type="time" class="form-control" id="max_time" formControlName="max_time">
@@ -41,8 +42,8 @@
 
         </div>
     </div>
+</form>
 
-    
     <hr class="my-4">
     <div class="container-fluid my-4">
 
@@ -62,8 +63,8 @@
                         <input readonly type="text" class="form-control" id="data_type" placeholder="{{ body.data_type }}">
                     </div>
                     <div class="md-form form-group">
-                        <label for="mac_addr"><strong>MAC Address</strong></label>
-                        <input readonly type="text" class="form-control" id="mac_addr" placeholder="{{ body.computer_windows_id }}">
+                        <label for="computer_windows_id"><strong>MAC Address</strong></label>
+                        <input readonly type="text" class="form-control" id="computer_windows_id" placeholder="{{ body.computer_windows_id }}">
                     </div>
                     <div class="md-form form-group">
                         <label for="timestamp"><strong>timestamp</strong></label>
@@ -88,4 +89,3 @@
         </ng-container>
     </div>
     </div>
-</form>

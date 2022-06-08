@@ -20,7 +20,7 @@ export class EdrComponent implements OnInit {
               public EDR_SERVICE: EdrService) {}
 
   async ngOnInit() {
-    this.getDataEdr(new HttpParams())
+    // this.getDataEdr(new HttpParams())
     this.initGrpFormEdr()
   }
   /*
@@ -45,7 +45,7 @@ export class EdrComponent implements OnInit {
   }
 
   onSubmitFormEdr() {
-    console.log(this.FORM_GRP_GET_EDR.value);
+    console.log("data edr : ", this.FORM_GRP_GET_EDR.value);
 
     let params = new HttpParams();
 

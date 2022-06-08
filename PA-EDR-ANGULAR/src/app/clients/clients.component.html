@@ -1,0 +1,22 @@
+<!-- <ng-container *ngIf="IN_CLIENTS_DATA">
+    <div *ngFor="let body of IN_CLIENTS_DATA.body" class="mb-5">
+        <label for="id"><strong>{{body._id}}</strong></label>
+        <label for="pc_name"><strong>{{body.pc_name}}</strong></label>
+        <label for="username"><strong>{{body.username}}</strong></label> -->
+
+<div class="container-fluid my-4">
+    <div *ngIf="IN_CLIENTS_DATA">
+        <div *ngFor="let body of IN_CLIENTS_DATA.body" class="mb-5">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title text-center"><strong>{{body.pc_name}}</strong></h5>
+                    <h6 class="card-subtitle mb-2 text-muted text-center">{{body.username}}</h6>
+                    <p class="card-text text-center"><strong><u>MAC Address</u> :</strong> {{body._id}}</p>
+                    <div class="text-center">
+                        <button type="button" class="btn btn-outline-primary text-center" (click)="onSubmitClients(body._id)">Select</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
