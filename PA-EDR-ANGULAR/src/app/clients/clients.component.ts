@@ -23,6 +23,12 @@ export class ClientsComponent implements OnInit {
     
   }
 
+  copyInputMessage(inputElement: any){
+    inputElement.select();
+    document.execCommand('copy');
+    inputElement.setSelectionRange(0, 0);
+  }
+
   getDataClients() {
     this.CLIENTS_SERVICE.getClientsData().subscribe(response => { 
       this.IN_CLIENTS_DATA = response;
